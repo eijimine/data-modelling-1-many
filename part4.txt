@@ -1,0 +1,62 @@
+1 - SELECT title FROM articles WHERE author_id = (SELECT id FROM authors WHERE name = 'Kara Melton');
+                                                 title
+--------------------------------------------------------------------------------------------------
+ How Tech Business Models Come From Marginalized Communities, But Startups Are Still Mostly White
+ Confronting the Assumption of Whiteness in Virtual Spaces
+(2 rows)
+
+2 - SELECT name FROM cities WHERE province_id = (SELECT id FROM provinces WHERE name = 'Ontario');
+  name
+---------
+ Toronto
+ Ottawa
+(2 rows)
+
+3 - SELECT name FROM authors WHERE id = (SELECT author_id from articles WHERE title = 'Coding Bootcamps and Emotional Labor');
+       name
+-------------------
+ Tilde Ann Thurium
+(1 row)
+
+4 - SELECT COUNT(*) FROM provinces;
+ count
+-------
+    14
+(1 row)
+
+5 - SELECT COUNT(*) FROM persons WHERE residence_id = (SELECT id from residences where address = '4740 McDermott Street');
+ count
+-------
+     2
+(1 row)
+
+6 - SELECT name FROM cities WHERE id = (SELECT city_id FROM residences WHERE address = '4740 McDermott Street');
+  name
+--------
+ Ottawa
+(1 row)
+
+7 - SELECT name FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE address = '4740 McDermott Street'));
+  name
+---------
+ Ontario
+(1 row)
+
+8 - SELECT name FROM countries WHERE id = (SELECT country_id FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE address = '4740 McDermott Street')));
+  name
+--------
+ Canada
+(1 row)
+
+
+9 - SELECT name FROM countries WHERE id = (SELECT country_id FROM provinces WHERE id = (SELECT province_id FROM cities WHERE id = (SELECT city_id FROM residences WHERE id = (SELECT residence_id FROM persons WHERE name = 'Destini Davis'))));
+  name
+--------
+ Canada
+(1 row)
+
+10 - SELECT COUNT(*) FROM articles WHERE author_id = (select id from authors where name = 'Aditya Mukerjee');
+ count
+-------
+     1
+(1 row)
